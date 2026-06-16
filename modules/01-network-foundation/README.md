@@ -2,7 +2,7 @@
 
 ## Goal
 Stand up pfSense as the virtual router and firewall, create all 5 site network
-segments in VirtualBox, and verify inter-site routing before any Windows Server
+segments in VMware Workstation Pro, and verify inter-site routing before any Windows Server
 VM is built.
 
 ## Status
@@ -16,11 +16,11 @@ VM is built.
 | CPUs | 1 |
 | Disk | 16 GB (dynamic) |
 | Adapter 1 | Bridged — WAN (internet uplink) |
-| Adapter 2 | Internal Network — Wayne_HQ |
-| Adapter 3 | Internal Network — Paterson |
-| Adapter 4 | Internal Network — Wanaque |
-| Adapter 5 | Internal Network — EastOrange (via VBoxManage) |
-| Adapter 6 | Internal Network — Lodi (via VBoxManage) |
+| Adapter 2 | LAN Segment — Wayne_HQ |
+| Adapter 3 | LAN Segment — Paterson |
+| Adapter 4 | LAN Segment — Wanaque |
+| Adapter 5 | LAN Segment — EastOrange (via VMware Workstation CLI / vmrun) |
+| Adapter 6 | LAN Segment — Lodi (via VMware Workstation CLI / vmrun) |
 
 ## Interface IP Assignments (pfSense)
 | Interface | Role | IP |
@@ -36,18 +36,18 @@ VM is built.
 - DHCP handled by pfSense per site — not the Domain Controller.
   Rationale: minimize DC attack surface. A DHCP compromise must not give
   access to Active Directory.
-- Each site on its own VirtualBox Internal Network — isolated broadcast
+- Each site on its own VMware Workstation Pro LAN Segment — isolated broadcast
   domain, no direct access to host machine or home network.
 - Only pfSense WAN adapter is Bridged — single controlled point touching
   the real network.
-- Adapters 5 and 6 added via VBoxManage CLI — VirtualBox GUI only exposes
-  4 adapters, CLI required for additional NICs.
+- Adapters 5 and 6 configured via VMware Workstation CLI / vmrun — additional
+  NICs added outside the standard GUI workflow.
 
 ## Steps Completed
 
 ### Step 2 — pfSense Installation
 
-![pfsense network adapter configuration done](../../diagrams/01-network-foundation/08_pfsense-install-complete.png)
+<!-- Screenshots will be added here -->
 
 ## Issues Encountered
 <!-- Any problems hit and how they were resolved -->

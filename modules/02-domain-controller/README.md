@@ -14,7 +14,7 @@ Configure DNS. Set static IP. Take baseline snapshot.
 | RAM | 4096 MB |
 | CPUs | 2 |
 | Disk | 60 GB (dynamic) |
-| Network | Internal Network — Wayne_HQ |
+| Network | LAN Segment — Wayne_HQ |
 | Static IP | 10.10.0.10 |
 | Gateway | 10.10.0.1 (pfSense) |
 | DNS | 127.0.0.1 (self) |

@@ -1,7 +1,7 @@
 # ABC & XYZ Dealership — Enterprise Network Lab
 
 ## Overview
-A multi-site enterprise network simulation built in VirtualBox on a single Windows desktop.
+A multi-site enterprise network simulation built in VMware Workstation Pro on a single Windows desktop.
 Based on a real network infrastructure proposal designed during my time at PCCC(2024).
 
 Simulates a 5-location Active Directory infrastructure for a fictional auto dealership company
@@ -18,7 +18,7 @@ a new HQ in Wayne, NJ.
 ## Lab Environment
 | Component | Detail |
 |-----------|--------|
-| Hypervisor | Oracle VirtualBox |
+| Hypervisor | VMware Workstation Pro |
 | Host OS | Windows (single desktop machine) |
 | Server OS | Windows Server 2022 Standard Evaluation |
 | Router/Firewall | pfSense CE |
@@ -37,7 +37,7 @@ a new HQ in Wayne, NJ.
 ## Module Progress
 | Module | Description | Status |
 |--------|-------------|--------|
-| 01 | Network Foundation — VirtualBox + pfSense + site segments | 🔄 In Progress |
+| 01 | Network Foundation — VMware Workstation Pro + pfSense + site segments | 🔄 In Progress |
 | 02 | Domain Controller — DC1 Wayne HQ, AD forest, DNS | ⏳ Planned |
 | 03 | Branch DCs — Multi-site AD, Sites & Services, replication | ⏳ Planned |
 | 04 | File Server — Shared folders, permissions, SMB encryption | ⏳ Planned |
@@ -50,7 +50,7 @@ a new HQ in Wayne, NJ.
 - **DNS on DC1** — required for Active Directory to function. pfSense handles
   upstream DNS forwarding to the internet only.
 - **File server on a separate VM** — never co-located on a Domain Controller.
-- **Internal Networks per site** — VirtualBox Internal Network mode used for each
+- **LAN Segments per site** — VMware Workstation Pro LAN Segment mode used for each
   site segment. No lab VM is in Bridged mode except pfSense's WAN interface.
 
 ## Repository Structure
