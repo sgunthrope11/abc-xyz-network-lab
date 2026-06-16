@@ -2,8 +2,7 @@
 
 ## Overview
 A multi-site enterprise network simulation built in VirtualBox on a single Windows desktop.
-Based on a real network infrastructure proposal designed during the B.S. Information Technology
-program at William Paterson University (2026).
+Based on a real network infrastructure proposal designed during my time at PCCC(2024).
 
 Simulates a 5-location Active Directory infrastructure for a fictional auto dealership company
 (ABC & XYZ) expanding from 2 standalone sites to a centralized 5-site enterprise network with
