@@ -47,7 +47,7 @@ VM is built.
 
 ### Step 2 — pfSense Installation
 
-![pfSense installation complete](../../diagrams/01-network-foundation/08_pfsense-install-complete.png)
+![pfsense network adapter configuration done](../../diagrams/01-network-foundation/08_pfsense-install-complete.png)
 
 ## Issues Encountered
 <!-- Any problems hit and how they were resolved -->
