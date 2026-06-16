@@ -44,7 +44,10 @@ VM is built.
   4 adapters, CLI required for additional NICs.
 
 ## Steps Completed
-<!-- Document each step here as you complete it -->
+
+### Step 2 — pfSense Installation
+
+![pfSense installation complete](../../diagrams/01-network-foundation/08_pfsense-install-complete.png)
 
 ## Issues Encountered
 <!-- Any problems hit and how they were resolved -->
