@@ -38,7 +38,7 @@ a new HQ in Wayne, NJ.
 | Module | Description | Status |
 |--------|-------------|--------|
 | 01 | Network Foundation — VMware Workstation Pro + pfSense + site segments | 🔄 In Progress |
-| 02 | Domain Controller — DC1 Wayne HQ, AD forest, DNS | ⏳ Planned |
+| 02 | Domain Controller — DC1 Wayne HQ, AD forest, DNS | 🔄 In Progress |
 | 03 | Branch DCs — Multi-site AD, Sites & Services, replication | ⏳ Planned |
 | 04 | File Server — Shared folders, permissions, SMB encryption | ⏳ Planned |
 | 05 | GPOs & Security — Policies, firewall rules, password policy | ⏳ Planned |
@@ -76,7 +76,13 @@ abc-xyz-network-lab/
 ├── scripts/
 │   └── README.md
 └── diagrams/
-    └── README.md
+    ├── README.md
+    ├── 01-network-foundation/
+    ├── 02-domain-controller/
+    ├── 03-branch-domain-controllers/
+    ├── 04-file-server/
+    ├── 05-gpo-security/
+    └── 06-azure-ad/
 ```
 
 ## Background

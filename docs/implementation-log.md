@@ -27,7 +27,7 @@
 
 ---
 
-## Module 05 — GPOs + Security
+## Module 05 — Group Policy + Security Hardening
 **Started:** —
 **Completed:** —
 

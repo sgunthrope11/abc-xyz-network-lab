@@ -25,12 +25,12 @@ VM is built.
 ## Interface IP Assignments (pfSense)
 | Interface | Role | IP |
 |-----------|------|----|
-| WAN (vtnet0) | Internet uplink | DHCP from home router |
-| LAN (vtnet1) | Wayne HQ | 10.10.0.1/24 |
-| OPT1 (vtnet2) | Paterson | 10.10.1.1/24 |
-| OPT2 (vtnet3) | Wanaque | 10.10.2.1/24 |
-| OPT3 (vtnet4) | East Orange | 10.10.3.1/24 |
-| OPT4 (vtnet5) | Lodi | 10.10.4.1/24 |
+| WAN (em0) | Internet uplink | DHCP from home router |
+| LAN (em1) | Wayne HQ | 10.10.0.1/24 |
+| OPT1 (em2) | Paterson | 10.10.1.1/24 |
+| OPT2 (em3) | Wanaque | 10.10.2.1/24 |
+| OPT3 (em4) | East Orange | 10.10.3.1/24 |
+| OPT4 (em5) | Lodi | 10.10.4.1/24 |
 
 ## Design Note: VLANs vs. Site Subnetting
 
@@ -81,9 +81,31 @@ architecture.
 
 ## Steps Completed
 
+### Step 1 — VMware Network Setup
+
+Created 5 LAN Segments in VMware Workstation via VM Settings > Network Adapter > LAN Segments:
+- Wayne_HQ
+- Paterson
+- Wanaque
+- EastOrange
+- Lodi
+
+**Note:** LAN Segments are managed per-VM in VMware Workstation and are distinct from the Virtual Network Editor. They are configured through individual VM network adapter settings, not through a global network management panel.
+
+Created the pfSense VM shell and added 6 network adapters:
+- Adapter 1: Custom (VMnet0 / Bridged) — WAN uplink to home router
+- Adapter 2: Custom (LAN Segment: Wayne_HQ)
+- Adapter 3: Custom (LAN Segment: Paterson)
+- Adapter 4: Custom (LAN Segment: Wanaque)
+- Adapter 5: Custom (LAN Segment: EastOrange)
+- Adapter 6: Custom (LAN Segment: Lodi)
+
+**Design note:** LAN Segments were chosen over Host-Only networking specifically so the host machine has zero presence on site networks — all traffic must route through pfSense, mirroring how a real admin's workstation isn't an implicit member of the corporate network it manages.
+
 ### Step 2 — pfSense Installation
 
-<!-- Screenshots will be added here -->
+![pfSense CE installation complete](../../diagrams/01-network-foundation/08_pfsense-install-complete.png)
+*pfSense CE installation complete, booted to console menu for the first time.*
 
 ![pfSense Console — All Site Interfaces Configured](../../diagrams/01-network-foundation/04_pfsense-interface-ip-assignment.png)
 *All 5 site interfaces fully assigned: LAN (Wayne HQ, 10.10.0.1/24), OPT1 (Paterson, 10.10.1.1/24), OPT2 (Wanaque, 10.10.2.1/24), OPT3 (East Orange, 10.10.3.1/24), OPT4 (Lodi, 10.10.4.1/24). Each interface owns the .1 gateway address on its respective /24 subnet, with DHCP enabled and scoped to .100-.200 per site.*
