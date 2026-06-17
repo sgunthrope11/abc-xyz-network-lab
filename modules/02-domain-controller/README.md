@@ -28,7 +28,38 @@ Configure DNS. Set static IP. Take baseline snapshot.
   services recovery if AD becomes corrupted.
 
 ## Steps Completed
-<!-- Document each step here as you complete it -->
+
+## DC1 — Initial Build Status
+
+**VM Configuration:**
+- Hostname: DC1
+- Operating System: Windows Server 2022 Standard (Desktop Experience)
+- Network Adapter: Custom (Wayne_HQ LAN Segment)
+- VMware Tools: Installed
+
+**Static IP Configuration:**
+- IP address: 10.10.0.10
+- Subnet mask: 255.255.255.0 (/24)
+- Default gateway: 10.10.0.1
+- Preferred DNS server: 127.0.0.1
+
+**Addressing convention note:** pfSense owns the .1 gateway address on
+each site subnet. Primary site domain controllers are conventionally
+assigned .10. DHCP-assigned clients fall in the .100-.200 range. DC1's
+DNS is set to 127.0.0.1 (self) since it will become the authoritative
+DNS server for the abcxyz.local domain once promoted to a domain
+controller.
+
+**Build note:** Initial Windows Server installation hit a known VMware
+"Easy Install" bug that throws a "Windows cannot find the Microsoft
+Software License Terms" error. Resolved by selecting "I will install
+the operating system later" when creating the VM, then manually
+mounting the ISO via VM Settings > CD/DVD after VM creation, bypassing
+VMware's automated install wizard.
+
+**Status:** VM built, renamed, static IP configured and confirmed
+persistent. Ready for connectivity verification and AD DS role
+installation in the next session.
 
 ## Issues Encountered
 <!-- Any problems hit and how they were resolved -->
