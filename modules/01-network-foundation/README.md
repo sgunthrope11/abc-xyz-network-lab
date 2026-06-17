@@ -104,9 +104,6 @@ Created the pfSense VM shell and added 6 network adapters:
 
 ### Step 2 — pfSense Installation
 
-![pfSense CE installation complete](../../diagrams/01-network-foundation/08_pfsense-install-complete.png)
-*pfSense CE installation complete, booted to console menu for the first time.*
-
 ![pfSense Console — All Site Interfaces Configured](../../diagrams/01-network-foundation/04_pfsense-interface-ip-assignment.png)
 *All 5 site interfaces fully assigned: LAN (Wayne HQ, 10.10.0.1/24), OPT1 (Paterson, 10.10.1.1/24), OPT2 (Wanaque, 10.10.2.1/24), OPT3 (East Orange, 10.10.3.1/24), OPT4 (Lodi, 10.10.4.1/24). Each interface owns the .1 gateway address on its respective /24 subnet, with DHCP enabled and scoped to .100-.200 per site.*
 
