@@ -32,6 +32,42 @@ VM is built.
 | OPT3 (vtnet4) | East Orange | 10.10.3.1/24 |
 | OPT4 (vtnet5) | Lodi | 10.10.4.1/24 |
 
+## Design Note: VLANs vs. Site Subnetting
+
+This lab uses separate Layer 3 subnets (one /24 per site) rather than
+VLANs to achieve network segmentation. This is a deliberate design
+choice based on what each technology actually solves:
+
+**Site-to-site separation (this lab)** — Wayne HQ, Paterson, Wanaque,
+East Orange, and Lodi represent five distinct physical locations.
+Separate physical sites are segmented using Layer 3 (separate subnets
+routed by a firewall/router — pfSense, in this case), typically
+connected over WAN links, VPN tunnels, or MPLS circuits in a real
+deployment. VLANs don't apply at this layer since VLANs operate within
+a shared physical switching infrastructure — you can't VLAN across
+buildings without a WAN link carrying that traffic anyway.
+
+**Department-level separation (not implemented in this lab, noted for
+context)** — Within a single physical site, departments (e.g., Sales,
+Engineering, Servers) are typically segmented using VLANs at Layer 2.
+Each VLAN is mapped to its own subnet, and a Layer 3 device (firewall,
+router, or core switch) routes between them using either dedicated
+interfaces or a trunk port with 802.1Q tagging.
+
+**How this scales in a real enterprise:** A 1000-person company with
+five sites would not deploy five independent /16 networks — that would
+waste enormous address space (5 x 65,534 addresses for what might be
+20-200 devices per site). Instead, the organization would typically
+receive one larger private allocation (e.g., 10.0.0.0/8), subnet that
+block per site using the 2nd or 3rd octet as a site identifier, and
+then further slice each site's allocation into VLANs per department.
+
+**Summary:** Site separation = Layer 3 (subnets/routing). Department
+separation within a site = Layer 2 (VLANs), each still mapped to its
+own Layer 3 subnet. This lab implements only the site-separation layer;
+VLANs are a natural extension point for anyone building on this
+architecture.
+
 ## Design Decisions
 - DHCP handled by pfSense per site — not the Domain Controller.
   Rationale: minimize DC attack surface. A DHCP compromise must not give
